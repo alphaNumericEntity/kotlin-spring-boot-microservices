@@ -1,148 +1,32 @@
-## Video Call
+# Django-registration-and-login-system
+This web app has been developed using the popular Django framework and Bootstrap for the frontend. My motivation to build this project is so that I can learn about Django and tighten up my skills. This mini-app can be easily integrated into a bigger system project that needs to have a registration and login system.
 
-## [client](https://github.com/VNAPNIC/Flutter-video-calls)
+### Basic Features of The App
+    
+* Register – Users can register and create a new profile
+* Login - Registered users can login using username and password
+* Social Apps Login – Users can login using their GitHub or Google account
+* User Profile - Once logged in, users can create and update additional information such as avatar and bio in the profile page
+* Update Profile – Users can update their information such as username, email, password, avatar and bio
+* Remember me – Cookie Option, users don’t have to provide credentials every time they hit the site
+* Forgot Password – Users can easily retrieve their password if they forget it 
+* Admin Panel – admin can CRUD users
 
-## API Documents
+![ScreenShot](https://user-images.githubusercontent.com/66206865/131695930-648342b0-010b-44b2-a419-15ad54d47869.png)
 
-https://documenter.getpostman.com/view/7083569/Tzef9hxZ
+## Tutorial
+[Here](https://dev.to/earthcomfy/series/14274) is a tutorial on how to build this project.
 
-## response format
-
-```json
- {
-   "timestamp": "2021-06-28T06:10:11.786+00:00",
-   "code": 200,
-   "message": "",
-   "error": "",
-   "token": "",
-   "data": null
- }
+### Quick Start
+To get this project up and running locally on your computer follow the following steps.
+1. Set up a python virtual environment
+2. Run the following commands
 ```
-
-#### public IP local
-
+$ pip install -r requirements.txt
+$ python manage.py migrate
+$ python manage.py createsuperuser
+$ python manage.py runserver
 ```
-npm install -g localtunnel
-```
+   
+3. Open a browser and go to http://localhost:8000/
 
-```
-lt --port 8762
-```
-
-
-### Redis
-
-> redis-server
-
-Linux
-
-```
-sudo apt-get update
-sudo apt-get install build-essential tcl
-mkdir redis && cd redis
-wget https://download.redis.io/releases/redis-6.2.1.tar.gz
-tar xzf redis-6.2.1.tar.gz
-cd redis-6.2.1/
-make
-make cleaner
-
-sudo service redis-server restart
-redis-server
-src/redis-cli
-redis-cli ping
-
-redis-cli info
-redis-cli info stats
-redis-cli info server
-```
-
-> WSL
-
-```
-sudo apt update && apt upgrade
-sudo apt install redis-server
-sudo nano /etc/redis/redis.conf
-sudo service redis-server start
-redis-server
-redis-cli
-sudo service redis-server restart
-```
-
-```FLUSHDB``` – Deletes all keys from the connection's current database.
-
-```FLUSHALL``` – Deletes all keys from all databases.
-
-For example, in your shell:
-
-```
-redis-cli flushall
-```
-
-### Discovery service Eureka
-Hosts eureka server.
-
-PORT: 8761
-
-### Gateway
-Gateway for microservies. It includes JWT and Rolebased Access.
-``
-PORT: 8762
-
-### Auth service
-Custom Service that provides feature authentication.
-
-PORT: 8871
-
-Swagger:
-
-http://localhost:8762/api/auth/swagger-ui.htm
-
-http://localhost:8762/api/auth/v2/api-docs
-
-### User service
-Custom Service that provides feature user.
-
-PORT: 8872
-
-Swagger:
-
-http://localhost:8762/api/user/swagger-ui.htm
-
-http://localhost:8762/api/user/v2/api-docs
-
-### Storage service
-Custom Service that provides feature files.
-
-PORT: 8873
-
-Swagger:
-
-http://localhost:8762/api/storage/swagger-ui.htm
-
-http://localhost:8762/api/storage/v2/api-docs
-
-### P2p service
-Custom Service that provides feature WebRtc p2p.
-
-PORT: 8874
-
-Swagger:
-
-http://localhost:8762/api/p2p/swagger-ui.htm
-
-http://localhost:8762/api/p2p/v2/api-docs
-
-* P2pController provides HTTP requests handling, model processing and view presentation;
-* Domain package includes domain model and service;
-* Web Socket based Web RTC Signalling Server is located under the Socket directory;
-
-##### API
-Method |      URI           |  Description
- ------ | --------------------------------------------------- | ------- 
- Get | "", "/", "/index", "/home", "/main" | main page application web entry point
- Post | "/room" | process room selection form
- Get | "/room/{sid}/user/{uuid}" | select a room to enter; sid - room number, uuid - user id
- Get | "/room/{sid}/user/{uuid}/exit" | a room exit point for the user selected
- Get | "/room/random" | generates random room number
- Get | "/offer" | demonstrates sample SDP offer
- Get | "/stream" | demonstrates streaming video resolution selection
