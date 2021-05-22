@@ -1,5 +1,12 @@
 package com.vnapnic.user.services
 
 interface UserService {
-    fun findById(userId: String)
+    fun updateAvatar(accountId: String?, avatarId: String?)
+}
+
+class UserServiceImpl() : UserService {
+
+    override fun updateAvatar(accountId: String?, avatarId: String?) {
+    }
+
 }

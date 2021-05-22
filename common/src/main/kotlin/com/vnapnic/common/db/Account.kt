@@ -2,7 +2,6 @@ package com.vnapnic.common.db
 
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonPropertyOrder
 import org.springframework.data.annotation.Id
 import org.springframework.data.annotation.Transient
 import org.springframework.data.mongodb.core.mapping.Document
@@ -10,7 +9,6 @@ import org.springframework.data.mongodb.core.mapping.Document
 @Document(collection = "account")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 data class Account(
-
         @JsonProperty("id")
         @Id
         var id: String = "",
@@ -30,9 +28,12 @@ data class Account(
         var active: Boolean = false,
         @JsonProperty("verified") // Email verification passed
         var verified: Boolean = false,
-        @JsonProperty("verified") // Email verification passed
-
-        var staffId: String = ""
+        @JsonProperty("staffId")
+        var staffId: String = "",
+        @JsonProperty("role")
+        var role: Role? = Role.UNKNOWN,
+        @JsonProperty("info")
+        var info: UserInfo? = null
 ) {
     companion object {
         @Transient
