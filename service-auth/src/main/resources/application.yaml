@@ -1,0 +1,22 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+server:
+  port: 8871
+  tomcat:
+    protocol-header: x-forwarded-proto
+  forward-headers-strategy: native
+spring:
+  application:
+    name: auth-service
+  # Database
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/Cleaner
+  # Redis
+  redis:
+    database: 2
+    host: 127.0.0.1
+    port: 6379
+    timeout: 60000

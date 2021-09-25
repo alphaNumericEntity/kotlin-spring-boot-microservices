@@ -3,31 +3,17 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka
 server:
-  port: 8763
+  port: 8872
 spring:
   application:
     name: user-service
-
-#server:
-#  port: 1431
-#spring:
-#  application:
-#    name: user-service
-#
-#  datasource:
-#    url: jdbc:mysql://localhost:3306/vnapnic_schema
-#    username: root
-#    password: 123456
-#  jpa:
-#    generate-ddl: true
-#    hibernate:
-#      ddl-auto: update
-#  session:
-#    jdbc:
-#      initialize-schema: always
-#  jackson:
-#    default-property-inclusion: NON_NULL
-#eureka:
-#  client:
-#    serviceUrl:
-#      defaultZone: http://localhost:10000/eureka/
+  # Database
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/Cleaner
+  # Redis
+  redis:
+    database: 2
+    host: 127.0.0.1
+    port: 6379
+    timeout: 60000

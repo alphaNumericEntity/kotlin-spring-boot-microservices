@@ -1,6 +1,8 @@
 package com.vnapnic.user.repositories
 
-import com.vnapnic.user.models.User
-import org.springframework.data.repository.CrudRepository
+import com.vnapnic.database.beans.AccountBean
+import org.springframework.data.mongodb.repository.MongoRepository
+import org.springframework.stereotype.Repository
 
-interface UserRepository : CrudRepository<User, Long>
+@Repository
+interface UserRepository : MongoRepository<AccountBean, String>
