@@ -3,10 +3,14 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka
 server:
-  port: 8764
+  port: 8763
 spring:
   application:
-    name: user-service
+    name: auth-service
+application:
+  jwtTTL: 7776000000 #90 days (ms)
+  jwtPhase: 9b6dae5aeedc5432dd25f160e829b64e
+  jwtIssuer: vn-social
 
 #server:
 #  port: 1431
